@@ -1,30 +1,56 @@
 (function(exports) {
 
-  (function returnsStringOfHTML() {
-    var noteList = new NoteList(Note);
-    noteList.add('hello world');
-    noteList.add('hello Allan');
-    noteList.add('hello Tom');
-    var noteListView = new NoteListView(noteList);
+  const beforeTest = function(exports) {
+    function NoteDouble(string) {
+      this._text = string
+    }
+
+    NoteDouble.prototype.text = function () {
+      return this._text;
+    };
+
+    function NoteListDouble(arrayOfNoteDoubles) {
+      this._notes = arrayOfNoteDoubles;
+    }
+
+    NoteListDouble.prototype.notes = function () {
+      return this._notes;
+    };
+
+    exports.NoteDouble = NoteDouble;
+    exports.NoteListDouble = NoteListDouble;
+  }
+
+  function returnsStringOfHTML() {
+    beforeTest(this);
+    var noteListView = new NoteListView(new NoteListDouble([
+      new NoteDouble('hello world'),
+      new NoteDouble('hello Allan'),
+      new NoteDouble('hello Tom')
+    ]));
     HTMLstring = '<ul><li><div> hello world </div></li>' +
     '<li><div> hello Allan </div></li>' +
     '<li><div> hello Tom </div></li></ul>'
     assert.isTrue(noteListView.render() === HTMLstring)
-  })();
+  };
 
-  (function testNoteListViewWithNoNotes() {
-    var noteList = new NoteList(Note);
-    var noteListView = new NoteListView(noteList);
+  returnsStringOfHTML();
+
+  function testNoteListViewWithNoNotes() {
+    beforeTest(this)
+    var noteListView = new NoteListView(new NoteListDouble([]));
     HTMLstring = "<ul></ul>"
     assert.isTrue(noteListView.render() === HTMLstring)
-  })();
+  };
 
-  (function testNoteListViewWithOneNote() {
-    var noteList = new NoteList(Note);
-    noteList.add('hi')
-    var noteListView = new NoteListView(noteList);
+  testNoteListViewWithNoNotes();
+
+  function testNoteListViewWithOneNote() {
+    var noteListView = new NoteListView(new NoteListDouble([new NoteDouble('hi')]));
     HTMLstring = "<ul><li><div> hi </div></li></ul>"
     assert.isTrue(noteListView.render() === HTMLstring)
-  })()
+  }
+
+  testNoteListViewWithOneNote();
 
 })(this);
