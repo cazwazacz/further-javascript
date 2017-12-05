@@ -7,23 +7,18 @@
     exports.NoteDouble = NoteDouble;
   }
 
-  function createsAndStoresNotes() {
+  describe("Creates and stores notes", function() {
     beforeTest(this);
     list.add('Hello');
     list.add('How are you?');
     list.add('Wazzaaaaa');
     assert.isTrue(list.notes().length === 3);
-  };
+  })
 
-  createsAndStoresNotes();
-
-  function storeAnInstanceOfNote() {
+  describe("Store an instance of note", function() {
     beforeTest(this);
     list.add('Hello');
     assert.isInstanceOf(list.notes()[0], NoteDouble);
-  };
-
-  storeAnInstanceOfNote();
-
+  })
 
 })(this);

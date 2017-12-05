@@ -21,7 +21,7 @@
     exports.NoteListDouble = NoteListDouble;
   }
 
-  function returnsStringOfHTML() {
+  describe("Returns HTML string", function() {
     beforeTest(this);
     var noteListView = new NoteListView(new NoteListDouble([
       new NoteDouble('hello world'),
@@ -32,25 +32,19 @@
     '<li><div> hello Allan </div></li>' +
     '<li><div> hello Tom </div></li></ul>'
     assert.isTrue(noteListView.render() === HTMLstring)
-  };
+  })
 
-  returnsStringOfHTML();
-
-  function testNoteListViewWithNoNotes() {
+  describe("Note List View with No Notes", function() {
     beforeTest(this)
     var noteListView = new NoteListView(new NoteListDouble([]));
     HTMLstring = "<ul></ul>"
     assert.isTrue(noteListView.render() === HTMLstring)
-  };
+  })
 
-  testNoteListViewWithNoNotes();
-
-  function testNoteListViewWithOneNote() {
+  describe("Note list view with one note", function() {
     var noteListView = new NoteListView(new NoteListDouble([new NoteDouble('hi')]));
     HTMLstring = "<ul><li><div> hi </div></li></ul>"
     assert.isTrue(noteListView.render() === HTMLstring)
-  }
-
-  testNoteListViewWithOneNote();
+  })
 
 })(this);

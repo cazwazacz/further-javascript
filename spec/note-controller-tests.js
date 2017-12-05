@@ -1,6 +1,6 @@
 (function(exports) {
-  function noteControllerAddsHTMLtoDiv() {
 
+  describe("NoteController adds HTML to Div", function() {
     function NoteListDouble() {}
 
     NoteListDouble.prototype.add = function (argument) {}
@@ -17,7 +17,6 @@
     string = '<ul><li><div> Favourite drink: seltzer </div></li></ul>';
     noteController.insertHTML();
     assert.isTrue(mainDiv.innerHTML === string);
-  }
+  })
 
-  noteControllerAddsHTMLtoDiv();
 })(this);
