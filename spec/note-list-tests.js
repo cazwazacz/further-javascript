@@ -1,8 +1,7 @@
 (function(exports) {
 
   const beforeTest = function(exports) {
-    function NoteDouble(string) {
-    }
+    function NoteDouble(string) {}
     var list = new NoteList(NoteDouble);
     exports.list = list;
     exports.NoteDouble = NoteDouble;
