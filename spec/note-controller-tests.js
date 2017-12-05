@@ -16,7 +16,7 @@
 
     string = '<ul><li><div> Favourite drink: seltzer </div></li></ul>';
     noteController.insertHTML();
-    assert.isTrue(mainDiv.innerHTML === string);
+    return assert.isTrue(mainDiv.innerHTML === string);
   })
 
 })(this);

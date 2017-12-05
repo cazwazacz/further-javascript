@@ -12,13 +12,13 @@
     list.add('Hello');
     list.add('How are you?');
     list.add('Wazzaaaaa');
-    assert.isTrue(list.notes().length === 3);
+    return assert.isTrue(list.notes().length === 3);
   })
 
   describe("Store an instance of note", function() {
     beforeTest(this);
     list.add('Hello');
-    assert.isInstanceOf(list.notes()[0], NoteDouble);
+    return assert.isInstanceOf(list.notes()[0], NoteDouble);
   })
 
 })(this);

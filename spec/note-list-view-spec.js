@@ -31,20 +31,20 @@
     HTMLstring = '<ul><li><div> hello world </div></li>' +
     '<li><div> hello Allan </div></li>' +
     '<li><div> hello Tom </div></li></ul>'
-    assert.isTrue(noteListView.render() === HTMLstring)
+    return assert.isTrue(noteListView.render() === HTMLstring)
   })
 
   describe("Note List View with No Notes", function() {
     beforeTest(this)
     var noteListView = new NoteListView(new NoteListDouble([]));
     HTMLstring = "<ul></ul>"
-    assert.isTrue(noteListView.render() === HTMLstring)
+    return assert.isTrue(noteListView.render() === HTMLstring)
   })
 
   describe("Note list view with one note", function() {
     var noteListView = new NoteListView(new NoteListDouble([new NoteDouble('hi')]));
     HTMLstring = "<ul><li><div> hi </div></li></ul>"
-    assert.isTrue(noteListView.render() === HTMLstring)
+    return assert.isTrue(noteListView.render() === HTMLstring)
   })
 
 })(this);
